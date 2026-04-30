@@ -271,3 +271,14 @@
 .clearBtn:hover {
   background: #e6f2ee;
 }
+
+.chipLabel {
+  background: #dce7e3;
+  color: #2f4a43;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}

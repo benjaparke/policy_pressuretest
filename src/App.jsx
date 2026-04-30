@@ -162,7 +162,7 @@ return <div className={styles.app}>
   </button>
 </div>
           <div className={styles.verdict}>
-            <div className={styles.muted}>Overall Policy Strenght</div>
+            <div className={styles.muted}>Overall Policy Strength</div>
             <div className={styles.scoreRow}>
               <div className={styles.bigScore}>{result?.overall?.score?.toFixed?.(1) ?? '—'}</div><div className={styles.outOf}>/ 10</div>
               <span className={styles.badge} style={badgeStyle(result?.overall?.score || 0)}>{result?.overall?.risk_level || 'No verdict'}</span>

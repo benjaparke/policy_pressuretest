@@ -139,7 +139,7 @@ return <div className={styles.app}>
     <main className={styles.main}>
      <section className={styles.leftPanel}>
         <div className={styles.label}>Put your policy to the test:</div>
-        <textarea className={styles.textarea} value={policy} onChange={(e)=>setPolicy(e.target.value)} placeholder="Paste a workplace policy here..."/>
+        <textarea className={styles.textarea} value={policy} onChange={(e)=>setPolicy(e.target.value)} placeholder="Paste a workplace policy here... or select a sample policy below."/>
         <div className={styles.footerStack}>
           <div className={styles.chipsRow}>{Object.keys(examples).map((k)=><button key={k} className={styles.chip} onClick={()=>setPolicy(examples[k])}>{k}</button>)}</div>
           <button className={styles.runBtn} disabled={loading || !policy.trim()} onClick={runTest}>Run pressure test</button>

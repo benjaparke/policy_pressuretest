@@ -52,12 +52,23 @@
   font-weight: 700;
   letter-spacing: .02em;
   color: #0f6e56; /* same green as logo */
+  text-transform: uppercase;
 }
 .textarea {
   flex: 1; resize:none; border:1px solid #c9dad5; border-radius:10px; padding:12px; background:#fff;
 }
-.footerStack { margin-top:auto; display:flex; flex-direction:column; gap:12px; }
-.chipsRow { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+.footerStack {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chipsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
 .chip {
   border: 1px solid #bcd0ca;
   background: #f3faf7;
@@ -69,13 +80,22 @@
 .runBtn {
   margin-top: 6px;
   border: none;
-  padding: 12px;
+
+  /* Make it bigger */
+  padding: 16px;
+  min-height: 56px;
+
   background: #0f6e56;
   color: #fff;
   width: 100%;
-  font-weight: 600;
-  font-size: 14px;
+
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
   cursor: pointer;
+  border-radius: 8px;
 }
 .runBtn:disabled { opacity:.7; cursor:not-allowed; }
 

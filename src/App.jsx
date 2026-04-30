@@ -10,16 +10,26 @@ const examples = {
 
 const hiddenDimensions = ['Communication', 'Overall robustness']
 
-const dimensions = [
-  'Clarity',
-  'Enforceability',
-  'Comprehensiveness',
-  'Legal Compliance',
-  'Responsibility',
-  'Flexibility'
-]
+const promptSchema = `
+Return a JSON object with keys:
+- overall: { score: number 1-10, risk_level: string, summary: string }
+- dimensions: exactly 6 items.
 
-const promptSchema = `Return a JSON object with keys: overall (score 1-10, risk_level, summary), and dimensions (array of 7 items, each with title, score 1-10, risk_level, findings[{text,severity}]).`
+The dimensions must include these 3 required categories:
+1. Clarity
+2. Compliance
+3. Fairness
+
+Choose exactly 3 additional categories that are most relevant to the policy based on highest risk and usefulness.
+
+Suggested optional categories include:
+Misuse Risk, Enforceability, Edge Cases, Employee Experience, Operational Burden, Fraud Risk, Manager Discretion, Documentation Risk, Implementation Risk.
+
+Each dimension must include:
+{ title: string, score: number 1-10, risk_level: string, findings: [{ text: string, severity: string }] }
+
+Return ONLY valid JSON.
+`
 
 const scoreColor = (score) => score >= 7 ? '#0F6E56' : score >= 4 ? '#854F0B' : '#A32D2D'
 const badgeStyle = (score) => ({ background: score >= 7 ? '#d9f2e9' : score >= 4 ? '#f7ebd7' : '#f9dfdf', color: scoreColor(score) })
@@ -58,14 +68,36 @@ export default function App() {
     }
   }
 
-  const stripData = useMemo(() => {
-    if (!result) return dimensions.map((title) => ({ title, score: 0 }))
-  const right = (result.dimensions || []).filter(
-  (d) => !hiddenDimensions.includes(d.title)
-)
+const stripData = useMemo(() => {
+  if (!result) return []
 
-return right.map((d) => ({ title: d.title, score: d.score }))
-  }, [result])
+  const all = (result.dimensions || []).filter(
+    (d) => !hiddenDimensions.includes(d.title)
+  )
+
+  const required = ['Clarity', 'Compliance', 'Fairness']
+
+  // Find required categories (flexible matching)
+  const requiredItems = required
+    .map((r) =>
+      all.find((d) =>
+        d.title.toLowerCase().includes(r.toLowerCase())
+      )
+    )
+    .filter(Boolean)
+
+  // Fill remaining slots
+  const others = all.filter(
+    (d) => !requiredItems.includes(d)
+  )
+
+  const final = [...requiredItems, ...others].slice(0, 6)
+
+  return final.map((d) => ({
+    title: d.title,
+    score: d.score
+  }))
+}, [result])
 
   return <div className={styles.app}>
     <nav className={styles.topNav}>

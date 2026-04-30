@@ -15,15 +15,14 @@ Return a JSON object with keys:
 - overall: { score: number 1-10, risk_level: string, summary: string }
 - dimensions: exactly 6 items.
 
-The dimensions must include these 3 required categories:
+The dimensions must include these 2 required categories:
 1. Clarity
 2. Compliance
-3. Fairness
 
-Choose exactly 3 additional categories that are most relevant to the policy based on highest risk and usefulness.
+Choose exactly 4 additional categories that are most relevant to the policy based on highest risk and usefulness.
 
 Suggested optional categories include:
-Misuse Risk, Enforceability, Edge Cases, Employee Experience, Operational Burden, Fraud Risk, Manager Discretion, Documentation Risk, Implementation Risk.
+Misuse Risk, Enforceability, Employee Experience, Operational Burden, Fraud Risk, Documentation Risk, Implementation Risk.
 
 Each dimension must include:
 {

@@ -171,3 +171,36 @@
 .skelBar { height:16px; border-radius:8px; background: linear-gradient(90deg,#edf3f1,#dce7e3,#edf3f1); background-size:200% 100%; animation:pulse 1.2s infinite; }
 @keyframes pulse { from { background-position:0 0;} to { background-position:200% 0;} }
 .error { margin:16px; background:#fde7e7; color:#7f1d1d; border:1px solid #f4b4b4; border-radius:8px; padding:12px; }
+
+/* --- Nav tooltip --- */
+.navTooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.navTooltipBox {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  width: 280px;
+  background: #1f2d2a;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  line-height: 1.4;
+
+  /* hidden by default */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+
+  z-index: 20;
+}
+
+/* show on hover */
+.navTooltip:hover .navTooltipBox {
+  opacity: 1;
+  transform: translateY(0);
+}

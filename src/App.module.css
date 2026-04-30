@@ -124,8 +124,22 @@
 .title { font-weight:600; }
 .risk { margin-left:auto; font-size:12px; padding:4px 8px; border-radius:999px; }
 .chev { color:#6e8881; }
-.findings { margin:10px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:7px; }
-.finding { background:#f8fbfa; border-left:2px solid #8ea69f; padding:8px 10px; font-size:14px; }
+.findings {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.finding {
+  background: #f8fbfa;
+  border-left: 2px solid #8ea69f;
+  padding: 6px 8px;
+  font-size: 14px;
+  line-height: 1.35;
+}
 
 .loadingWrap { padding:24px; }
 .spinner { width:26px; height:26px; border:3px solid #cde0da; border-top-color:#0f6e56; border-radius:50%; animation:spin 0.9s linear infinite; }

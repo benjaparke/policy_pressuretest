@@ -10,26 +10,22 @@ const examples = {
 
 const hiddenDimensions = ['Communication', 'Overall robustness']
 
-const promptSchema = `
-Return a JSON object with keys:
-- overall: { score: number 1-10, risk_level: string, summary: string }
-- dimensions: exactly 6 items.
+.findings {
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-The dimensions must include these 3 required categories:
-1. Clarity
-2. Compliance
-3. Fairness
-
-Choose exactly 3 additional categories that are most relevant to the policy based on highest risk and usefulness.
-
-Suggested optional categories include:
-Misuse Risk, Enforceability, Edge Cases, Employee Experience, Operational Burden, Fraud Risk, Manager Discretion, Documentation Risk, Implementation Risk.
-
-Each dimension must include:
-{ title: string, score: number 1-10, risk_level: string, findings: [{ text: string, severity: string }] }
-
-Return ONLY valid JSON.
-`
+.finding {
+  background: #f8fbfa;
+  border-left: 2px solid #8ea69f;
+  padding: 6px 8px;
+  font-size: 14px;
+  line-height: 1.35;
+}
 
 const scoreColor = (score) => score >= 7 ? '#0F6E56' : score >= 4 ? '#854F0B' : '#A32D2D'
 const badgeStyle = (score) => ({ background: score >= 7 ? '#d9f2e9' : score >= 4 ? '#f7ebd7' : '#f9dfdf', color: scoreColor(score) })
@@ -127,14 +123,60 @@ const stripData = useMemo(() => {
         <div className={styles.strip}>{stripData.map((d) => <div className={styles.cell} key={d.title}><div className={styles.cellLabel}>{d.title}</div><div className={styles.cellScore} style={{color: scoreColor(d.score)}}>{d.score || '—'}</div><div className={styles.cellBarTrack}><div className={styles.cellBarFill} style={{ width: `${(d.score || 0) * 10}%`, background: scoreColor(d.score || 0) }} /></div></div>)}</div>
         {loading && <div className={styles.loadingWrap}><div className={styles.spinner} /><div className={styles.skeleton}>{Array.from({length:6}).map((_,i)=><div key={i} className={styles.skelBar} style={{width:`${70 + (i%3)*10}%`}} />)}</div></div>}
         {!!error && <div className={styles.error}>Error: {error}</div>}
-        {!loading && !error && <div className={styles.cards}>{(result?.dimensions || [])
-  .filter((d) => !['Communication', 'Overall robustness'].includes(d.title))
-  .map((d)=><article className={styles.card} key={d.title}>
-    <div className={styles.cardHeader}><div className={styles.icon}>⚑</div><div className={styles.title}>{d.title}</div>
-      <span className={styles.risk} style={badgeStyle(d.score)}>{d.score}/10 · {d.risk_level}</span><span className={styles.chev}>⌄</span></div>
-    <ul className={styles.findings}>{(d.findings || []).map((f,idx)=><li key={idx} className={styles.finding} style={{
-    borderLeftColor:f.severity==='high'?'#A32D2D':f.severity==='medium'?'#854F0B'
-      :f.severity==='improvement'?'#0c62d6':'#0F6E56'}}>{f.text}</li>)}</ul></article>)}</div>}
+        
+ {!loading && !error && (
+  <div className={styles.cards}>
+    {(result?.dimensions || [])
+      .filter((d) => !['Communication', 'Overall robustness'].includes(d.title))
+      .map((d) => (
+        <article className={styles.card} key={d.title}>
+          <div className={styles.cardHeader}>
+            <div className={styles.icon}>⚑</div>
+            <div className={styles.title}>{d.title}</div>
+            <span className={styles.risk} style={badgeStyle(d.score)}>
+              {d.score}/10 · {d.risk_level}
+            </span>
+            <span className={styles.chev}>⌄</span>
+          </div>
+
+          <ul className={styles.findings}>
+            {(d.findings || []).map((f, idx) => (
+              <li
+                key={idx}
+                className={styles.finding}
+                style={{
+                  borderLeftColor:
+                    f.severity === 'high'
+                      ? '#A32D2D'
+                      : f.severity === 'medium'
+                      ? '#854F0B'
+                      : f.severity === 'improvement'
+                      ? '#0c62d6'
+                      : '#0F6E56'
+                }}
+              >
+                {f.text}
+              </li>
+            ))}
+          </ul>
+
+          {d.score <= 6 && d.recommendations?.length > 0 && (
+            <div className={styles.recs}>
+              <div className={styles.recsTitle}>
+                {d.score <= 4 ? 'Critical fixes' : 'Recommended improvements'}
+              </div>
+              <ul className={styles.recsList}>
+                {d.recommendations.map((r, idx) => (
+                  <li key={idx}>{r}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </article>
+      ))}
+  </div>
+)}
+      
       </section>
     </main>
   </div>

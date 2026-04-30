@@ -82,6 +82,11 @@ const parsed = JSON.parse(cleanedContent)
     }
   }
 
+    const clearTest = () => {
+    setPolicy('')
+    setResult(null)
+    setError('')
+  }
 const stripData = useMemo(() => {
   if (!result) return []
 

@@ -119,7 +119,7 @@ return <div className={styles.app}>
 
   <div className={styles.navActions}>
     <div className={styles.navTooltip}>
-      <span className={styles.navLink}>How it works</span>
+      <span className={styles.navLink}>→ How it works</span>
       <div className={styles.navTooltipBox}>
         Evaluate how your workplace policy performs in real-world scenarios. 
         We score clarity, fairness, compliance, and risk, then suggest improvements where needed.

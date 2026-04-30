@@ -8,10 +8,15 @@ const examples = {
   'Code of conduct': 'Employees must treat everyone respectfully and avoid harassment. Violations may result in disciplinary action up to termination after HR review.'
 }
 
+const hiddenDimensions = ['Communication', 'Overall robustness']
+
 const dimensions = [
-  'Ambiguities & unclear language', 'Edge cases & unusual scenarios', 'Potential misuse or abuse',
-  'Fairness & consistency risks', 'Compliance & legal risk areas', 'Employee experience impact',
-  'Recommended improvements', 'Overall robustness'
+  'Clarity',
+  'Enforceability',
+  'Comprehensiveness',
+  'Legal Compliance',
+  'Responsibility',
+  'Flexibility'
 ]
 
 const promptSchema = `Return a JSON object with keys: overall (score 1-10, risk_level, summary), and dimensions (array of 7 items, each with title, score 1-10, risk_level, findings[{text,severity}]).`
@@ -55,8 +60,11 @@ export default function App() {
 
   const stripData = useMemo(() => {
     if (!result) return dimensions.map((title) => ({ title, score: 0 }))
-    const right = result.dimensions || []
-    return [...right, { title: 'Overall robustness', score: result.overall?.score || 0 }].map((d) => ({ title: d.title, score: d.score }))
+  const right = (result.dimensions || []).filter(
+  (d) => !hiddenDimensions.includes(d.title)
+)
+
+return right.map((d) => ({ title: d.title, score: d.score }))
   }, [result])
 
   return <div className={styles.app}>
@@ -87,7 +95,14 @@ export default function App() {
         <div className={styles.strip}>{stripData.map((d) => <div className={styles.cell} key={d.title}><div className={styles.cellLabel}>{d.title}</div><div className={styles.cellScore} style={{color: scoreColor(d.score)}}>{d.score || '—'}</div><div className={styles.cellBarTrack}><div className={styles.cellBarFill} style={{ width: `${(d.score || 0) * 10}%`, background: scoreColor(d.score || 0) }} /></div></div>)}</div>
         {loading && <div className={styles.loadingWrap}><div className={styles.spinner} /><div className={styles.skeleton}>{Array.from({length:6}).map((_,i)=><div key={i} className={styles.skelBar} style={{width:`${70 + (i%3)*10}%`}} />)}</div></div>}
         {!!error && <div className={styles.error}>Error: {error}</div>}
-        {!loading && !error && <div className={styles.cards}>{(result?.dimensions || []).map((d)=><article className={styles.card} key={d.title}><div className={styles.cardHeader}><div className={styles.icon}>⚑</div><div className={styles.title}>{d.title}</div><span className={styles.risk} style={badgeStyle(d.score)}>{d.score}/10 · {d.risk_level}</span><span className={styles.chev}>⌄</span></div><ul className={styles.findings}>{(d.findings || []).map((f,idx)=><li key={idx} className={styles.finding} style={{borderLeftColor:f.severity==='high'?'#A32D2D':f.severity==='medium'?'#854F0B':f.severity==='improvement'?'#0c62d6':'#0F6E56'}}>{f.text}</li>)}</ul></article>)}</div>}
+        {!loading && !error && <div className={styles.cards}>{(result?.dimensions || [])
+  .filter((d) => !['Communication', 'Overall robustness'].includes(d.title))
+  .map((d)=><article className={styles.card} key={d.title}>
+    <div className={styles.cardHeader}><div className={styles.icon}>⚑</div><div className={styles.title}>{d.title}</div>
+      <span className={styles.risk} style={badgeStyle(d.score)}>{d.score}/10 · {d.risk_level}</span><span className={styles.chev}>⌄</span></div>
+    <ul className={styles.findings}>{(d.findings || []).map((f,idx)=><li key={idx} className={styles.finding} style={{
+    borderLeftColor:f.severity==='high'?'#A32D2D':f.severity==='medium'?'#854F0B'
+      :f.severity==='improvement'?'#0c62d6':'#0F6E56'}}>{f.text}</li>)}</ul></article>)}</div>}
       </section>
     </main>
   </div>

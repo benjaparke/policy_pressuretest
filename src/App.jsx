@@ -132,7 +132,7 @@ return <div className={styles.app}>
         <textarea className={styles.textarea} value={policy} onChange={(e)=>setPolicy(e.target.value)} placeholder="Paste a workplace policy here... or select a sample policy below."/>
         <div className={styles.footerStack}>
           <div className={styles.chipsRow}>{Object.keys(examples).map((k)=><button key={k} className={styles.chip} onClick={()=>setPolicy(examples[k])}>{k}</button>)}</div>
-          <button className={styles.runBtn} disabled={loading || !policy.trim()} onClick={runTest}>Run pressure test</button>
+          <button className={styles.runBtn} disabled={loading || !policy.trim()} onClick={runTest}>Run Pressure Test</button>
           <div className={styles.verdict}>
             <div className={styles.muted}>Overall robustness</div>
             <div className={styles.scoreRow}>

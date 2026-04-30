@@ -125,15 +125,6 @@ return <div className={styles.app}>
         We score clarity, fairness, compliance, and risk, then suggest improvements where needed.
       </div>
     </div>
-
-    <a
-      className={styles.navLink}
-      href="https://github.com/benjaparke/policy_pressure_test"
-      target="_blank"
-      rel="noreferrer"
-    >
-      GitHub
-    </a>
   </div>
 </nav>
     <main className={styles.main}>

@@ -110,11 +110,27 @@ const stripData = useMemo(() => {
   return <div className={styles.app}>
     <nav className={styles.topNav}>
       <div className={styles.brand}><div className={styles.logoMark}>→</div><div className={styles.brandText}><h1>Policy Pressure Test</h1><p>built with Codex</p></div></div>
-      <div className={styles.navActions}><a className={styles.navLink} href="#">How it works</a><a className={styles.navLink} href="#">GitHub</a><button className={styles.cta}>Try it free</button></div>
+      <div className={styles.navActions}>
+     <div className={styles.navTooltip}>
+  <span className={styles.navLink}>How it works</span>
+  <div className={styles.navTooltipBox}>
+    Evaluate how your workplace policy performs in real-world scenarios. 
+    We score clarity, fairness, compliance, and risk, then suggest improvements where needed.
+  </div>
+</div>
+
+<a
+  className={styles.navLink}
+  href="https://github.com/benjaparke/policy_pressure_test"
+  target="_blank"
+  rel="noreferrer"
+>
+  GitHub
+</a>
     </nav>
     <main className={styles.main}>
      <section className={styles.leftPanel}>
-        <div className={styles.label}>Your policy</div>
+        <div className={styles.label}>Put your policy to the test:</div>
         <textarea className={styles.textarea} value={policy} onChange={(e)=>setPolicy(e.target.value)} placeholder="Paste a workplace policy here..."/>
         <div className={styles.footerStack}>
           <div className={styles.chipsRow}>{Object.keys(examples).map((k)=><button key={k} className={styles.chip} onClick={()=>setPolicy(examples[k])}>{k}</button>)}</div>

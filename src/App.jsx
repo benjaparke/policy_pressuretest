@@ -134,13 +134,13 @@ return <div className={styles.app}>
           <div className={styles.chipsRow}>{Object.keys(examples).map((k)=><button key={k} className={styles.chip} onClick={()=>setPolicy(examples[k])}>{k}</button>)}</div>
           <button className={styles.runBtn} disabled={loading || !policy.trim()} onClick={runTest}>Run Pressure Test</button>
           <div className={styles.verdict}>
-            <div className={styles.muted}>Overall robustness</div>
+            <div className={styles.muted}>Overall Policy Strenght</div>
             <div className={styles.scoreRow}>
               <div className={styles.bigScore}>{result?.overall?.score?.toFixed?.(1) ?? '—'}</div><div className={styles.outOf}>/ 10</div>
               <span className={styles.badge} style={badgeStyle(result?.overall?.score || 0)}>{result?.overall?.risk_level || 'No verdict'}</span>
             </div>
             <div className={styles.progressTrack}><div className={styles.progressFill} style={{ width: `${(result?.overall?.score || 0) * 10}%` }} /></div>
-            <p className={styles.summary}>{result?.overall?.summary || 'Run the pressure test to generate a robustness verdict and concise risk summary.'}</p>
+            <p className={styles.summary}>{result?.overall?.summary || 'Run the pressure test to generate an overall score and detailed risk summary.'}</p>
           </div>
         </div>
       </section>

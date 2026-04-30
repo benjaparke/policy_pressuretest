@@ -28,7 +28,7 @@ export default function App() {
   const runTest = async () => {
     setLoading(true); setError('')
     try {
-      const apiKey = import.meta.env.VITE_ANTHROPIC_API_KEY || import.meta.env.VITE_OPENAI_API_KEY
+      const apiKey = import.meta.env.VITE_OPENAI_API_KEY
       if (!apiKey) throw new Error('Missing API key. Add VITE_ANTHROPIC_API_KEY (or VITE_OPENAI_API_KEY) in .env.')
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',

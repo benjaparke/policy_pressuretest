@@ -65,7 +65,7 @@ export default function App() {
       <div className={styles.navActions}><a className={styles.navLink} href="#">How it works</a><a className={styles.navLink} href="#">GitHub</a><button className={styles.cta}>Try it free</button></div>
     </nav>
     <main className={styles.main}>
-     <section className={styles.leftPanel} style={{width: '400px', minWidth: '400px'}}>
+     <section className={styles.leftPanel}>
         <div className={styles.label}>Your policy</div>
         <textarea className={styles.textarea} value={policy} onChange={(e)=>setPolicy(e.target.value)} placeholder="Paste a workplace policy here..."/>
         <div className={styles.footerStack}>

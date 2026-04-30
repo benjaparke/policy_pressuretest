@@ -141,6 +141,29 @@
   line-height: 1.35;
 }
 
+.recs {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: #f3faf7;
+  border-radius: 8px;
+}
+
+.recsTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #304f47;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+.recsList {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
 .loadingWrap { padding:24px; }
 .spinner { width:26px; height:26px; border:3px solid #cde0da; border-top-color:#0f6e56; border-radius:50%; animation:spin 0.9s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg);} }

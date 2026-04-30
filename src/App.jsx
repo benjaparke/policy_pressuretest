@@ -66,7 +66,14 @@ export default function App() {
       })
       const payload = await response.json()
       if (!response.ok) throw new Error(payload.error?.message || 'API request failed')
-      const parsed = JSON.parse(payload.choices?.[0]?.message?.content || '{}')
+     const rawContent = payload.choices?.[0]?.message?.content || '{}'
+
+const cleanedContent = rawContent
+  .replace(/```json/g, '')
+  .replace(/```/g, '')
+  .trim()
+
+const parsed = JSON.parse(cleanedContent)
       setResult(parsed)
     } catch (err) {
       setError(err.message)

@@ -81,7 +81,6 @@
   margin-top: 6px;
   border: none;
 
-  /* Make it bigger */
   padding: 16px;
   min-height: 56px;
 
@@ -90,9 +89,8 @@
   width: 100%;
 
   font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 16px;
+  letter-spacing: 0.02em; /* reduced */
 
   cursor: pointer;
   border-radius: 8px;

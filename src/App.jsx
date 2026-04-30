@@ -107,27 +107,35 @@ const stripData = useMemo(() => {
   }))
 }, [result])
 
-  return <div className={styles.app}>
-    <nav className={styles.topNav}>
-      <div className={styles.brand}><div className={styles.logoMark}>→</div><div className={styles.brandText}><h1>Policy Pressure Test</h1><p>built with Codex</p></div></div>
-      <div className={styles.navActions}>
-     <div className={styles.navTooltip}>
-  <span className={styles.navLink}>How it works</span>
-  <div className={styles.navTooltipBox}>
-    Evaluate how your workplace policy performs in real-world scenarios. 
-    We score clarity, fairness, compliance, and risk, then suggest improvements where needed.
+return <div className={styles.app}>
+  <nav className={styles.topNav}>
+  <div className={styles.brand}>
+    <div className={styles.logoMark}>→</div>
+    <div className={styles.brandText}>
+      <h1>Policy Pressure Test</h1>
+      <p>built with Codex</p>
+    </div>
   </div>
-</div>
 
-<a
-  className={styles.navLink}
-  href="https://github.com/benjaparke/policy_pressure_test"
-  target="_blank"
-  rel="noreferrer"
->
-  GitHub
-</a>
-    </nav>
+  <div className={styles.navActions}>
+    <div className={styles.navTooltip}>
+      <span className={styles.navLink}>How it works</span>
+      <div className={styles.navTooltipBox}>
+        Evaluate how your workplace policy performs in real-world scenarios. 
+        We score clarity, fairness, compliance, and risk, then suggest improvements where needed.
+      </div>
+    </div>
+
+    <a
+      className={styles.navLink}
+      href="https://github.com/benjaparke/policy_pressure_test"
+      target="_blank"
+      rel="noreferrer"
+    >
+      GitHub
+    </a>
+  </div>
+</nav>
     <main className={styles.main}>
      <section className={styles.leftPanel}>
         <div className={styles.label}>Put your policy to the test:</div>
@@ -148,7 +156,9 @@ const stripData = useMemo(() => {
       </section>
 
       <section className={styles.rightPanel}>
-        <div className={styles.strip}>{stripData.map((d) => <div className={styles.cell} key={d.title}><div className={styles.cellLabel}>{d.title}</div><div className={styles.cellScore} style={{color: scoreColor(d.score)}}>{d.score || '—'}</div><div className={styles.cellBarTrack}><div className={styles.cellBarFill} style={{ width: `${(d.score || 0) * 10}%`, background: scoreColor(d.score || 0) }} /></div></div>)}</div>
+        <div className={styles.strip}>{stripData.map((d) => <div className={styles.cell} key={d.title}><div className={styles.cellLabel}>{d.title}</div>
+          <div className={styles.cellScore} style={{color: scoreColor(d.score)}}>{d.score || '—'}</div><div className={styles.cellBarTrack}>
+            <div className={styles.cellBarFill} style={{ width: `${(d.score || 0) * 10}%`, background: scoreColor(d.score || 0) }} /></div></div>)}</div>
         {loading && <div className={styles.loadingWrap}><div className={styles.spinner} /><div className={styles.skeleton}>{Array.from({length:6}).map((_,i)=><div key={i} className={styles.skelBar} style={{width:`${70 + (i%3)*10}%`}} />)}</div></div>}
         {!!error && <div className={styles.error}>Error: {error}</div>}
         
@@ -203,8 +213,7 @@ const stripData = useMemo(() => {
         </article>
       ))}
   </div>
-)}
-      
+)}     
       </section>
     </main>
   </div>

@@ -10,22 +10,34 @@ const examples = {
 
 const hiddenDimensions = ['Communication', 'Overall robustness']
 
-.findings {
-  margin: 6px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+const promptSchema = `
+Return a JSON object with keys:
+- overall: { score: number 1-10, risk_level: string, summary: string }
+- dimensions: exactly 6 items.
+
+The dimensions must include these 3 required categories:
+1. Clarity
+2. Compliance
+3. Fairness
+
+Choose exactly 3 additional categories that are most relevant to the policy based on highest risk and usefulness.
+
+Suggested optional categories include:
+Misuse Risk, Enforceability, Edge Cases, Employee Experience, Operational Burden, Fraud Risk, Manager Discretion, Documentation Risk, Implementation Risk.
+
+Each dimension must include:
+{
+  title: string,
+  score: number 1-10,
+  risk_level: string,
+  findings: [{ text: string, severity: string }],
+  recommendations: [string]
 }
 
-.finding {
-  background: #f8fbfa;
-  border-left: 2px solid #8ea69f;
-  padding: 6px 8px;
-  font-size: 14px;
-  line-height: 1.35;
-}
+Recommendations should be specific, actionable improvements. Only include recommendations where a change is actually useful. Do not force recommendations for strong areas.
+
+Return ONLY valid JSON.
+`
 
 const scoreColor = (score) => score >= 7 ? '#0F6E56' : score >= 4 ? '#854F0B' : '#A32D2D'
 const badgeStyle = (score) => ({ background: score >= 7 ? '#d9f2e9' : score >= 4 ? '#f7ebd7' : '#f9dfdf', color: scoreColor(score) })

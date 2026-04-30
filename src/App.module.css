@@ -31,7 +31,7 @@
 
 .main { display:flex; min-height: calc(100vh - 72px); }
 .leftPanel {
-  width: 450px; flex-shrink: 0; border-right:1px solid #dce7e3; background:#fcfefd;
+  width: 600px; flex-shrink: 0; border-right:1px solid #dce7e3; background:#fcfefd;
   padding:16px; display:flex; flex-direction:column; gap:8px;
 }
 .label { font-size:12px; text-transform: uppercase; letter-spacing: .04em; color:#5b746e; }

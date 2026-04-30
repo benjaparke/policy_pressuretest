@@ -74,27 +74,48 @@
 .summary { margin:0; font-style:italic; font-size:13px; color:#26463f; }
 
 .rightPanel { flex:1; max-width: calc(100% - 320px); display:flex; flex-direction:column; min-width:0; }
-.strip { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,1fr); border-bottom:0.5px solid #dce7e3; border-left:0.5px solid #dce7e3; }
+.strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 0.5px solid #dce7e3;
+  border-left: 0.5px solid #dce7e3;
+}
+
 .cell {
-  padding: 12px 14px;
+  padding: 10px 14px;
   background: #fff;
   border-right: 0.5px solid #dce7e3;
   border-top: 0.5px solid #dce7e3;
 }
+
+/* This puts title + score on the SAME LINE */
 .cellLabel {
+  display: inline;
   font-size: 14px;
   color: #304f47;
-  margin-bottom: 8px;
   font-weight: 600;
   line-height: 1.25;
 }
+
 .cellScore {
-  font-size: 26px;
+  display: inline;
+  margin-left: 8px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1;
 }
-.cellBarTrack { height:3px; background:#e3ece9; border-radius:3px; margin-top:6px; }
-.cellBarFill { height:100%; }
+
+/* Bar sits below */
+.cellBarTrack {
+  height: 4px;
+  background: #e3ece9;
+  border-radius: 3px;
+  margin-top: 8px;
+}
+
+.cellBarFill {
+  height: 100%;
+}
 
 .cards { overflow:auto; padding:14px; display:flex; flex-direction:column; gap:10px; }
 .card { background:#fff; border:1px solid #d7e6e1; border-radius:10px; padding:12px; }

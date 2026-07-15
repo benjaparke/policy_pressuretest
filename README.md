@@ -1,4 +1,4 @@
-# 🔬 Policy Pressure Test
+# Policy Pressure Test
 
 > **The policy auditor that finds the problems your legal team missed** _(but won't admit it)_
 
@@ -15,7 +15,7 @@ Backed by GPT-4 and delivered through a sleek React interface, this tool identif
 
 ---
 
-## 🎯 What It Does
+## What It Does
 
 Submit any workplace policy and get structured risk analysis across **eight critical dimensions**:
 
@@ -34,7 +34,7 @@ Each finding comes with a severity rating, so you know whether to panic immediat
 
 ---
 
-## ✨ Features
+## Features
 
 - **Live Policy Editor** – Full-height editor with your policy text front and center
 - **Quick Examples** – One-click sample policies (PTO, Remote Work, Expenses, Code of Conduct) to test drive the tool
@@ -60,7 +60,7 @@ Each finding comes with a severity rating, so you know whether to panic immediat
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 16+ and npm

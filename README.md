@@ -4,9 +4,9 @@
 
 ## What is This?
 
-Policy Pressure Test is an AI-powered analysis tool that transforms your boring, potentially problematic workplace policies into a detailed risk report in seconds. Paste a policy. Hit one button. Get crushed by reality.
+Policy Pressure Test is an AI-powered analysis tool that transforms your boring, potentially problematic workplace policies into a detailed risk report in seconds. Paste a policy. Hit one button. Get [...]
 
-Backed by GPT-4 and delivered through a sleek React interface, this tool identifies the ambiguities, edge cases, fairness gaps, and compliance landmines lurking in your company's policy documents before they become expensive legal lessons.
+Backed by GPT-4 and delivered through a sleek React interface, this tool identifies the ambiguities, edge cases, fairness gaps, and compliance landmines lurking in your company's policy documents befo[...]
 
 ### Think of it as:
 - **Policy MRI** - X-rays your policies to expose hidden issues
@@ -49,7 +49,7 @@ Each finding comes with a severity rating, so you know whether to panic immediat
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Tech | Purpose |
 |------|---------|
@@ -96,7 +96,7 @@ Each finding comes with a severity rating, so you know whether to panic immediat
 
 ---
 
-## 📋 How to Use
+## How to Use
 
 1. **Paste or select** – Drop your policy into the editor, or pick a quick example
 2. **Run test** – Click the "Run Pressure Test" button
@@ -105,13 +105,13 @@ Each finding comes with a severity rating, so you know whether to panic immediat
 
 ---
 
-## 🎬 Demo
+## Demo
 
 _(Add your live deployment URL here)_
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -124,7 +124,7 @@ src/
 
 ---
 
-## 🔧 Configuration
+## Configuration
 
 The app expects these environment variables:
 
@@ -135,7 +135,7 @@ Get your OpenAI key: [platform.openai.com/api-keys](https://platform.openai.com/
 
 ---
 
-## ⚖️ Important Notes
+## Important Notes
 
 - **This is not legal advice.** Policy Pressure Test is a tool for finding potential issues, not a substitute for a qualified employment lawyer.
 - **API costs apply.** Each analysis uses the OpenAI API. Monitor your usage.
@@ -143,16 +143,16 @@ Get your OpenAI key: [platform.openai.com/api-keys](https://platform.openai.com/
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Found a bug? Have an idea? Open an issue or submit a PR. Contributions welcome!
 
 ---
 
-## 📄 License
+## License
 
 [Add your license here]
 
 ---
 
-**Built with 🔍 and ☕ by [benjaparke](https://github.com/benjaparke)**
+**Built by [benjaparke](https://github.com/benjaparke)**
